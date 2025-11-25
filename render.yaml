@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: shock-trade-api
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn api.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.11"
+      - key: KALSHI_API_KEY
+        sync: false
+      - key: KALSHI_PRIVATE_KEY_PATH
+        value: /opt/render/project/src/kalshi_private_key.pem
+      - key: KALSHI_BASE_URL
+        value: https://demo-api.kalshi.co
+      - key: FOOTBALL_DATA_API_KEY
+        sync: false
+      - key: BANKROLL
+        value: "10000"
+      - key: MAX_PER_TRADE_PCT
+        value: "0.5"
+      - key: DAILY_LOSS_LIMIT
+        value: "500"
