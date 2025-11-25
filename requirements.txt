@@ -7,6 +7,9 @@ uvicorn[standard]>=0.24.0
 # HTTP Client
 httpx>=0.25.0
 
+# Cryptography (for Kalshi RSA auth)
+cryptography>=41.0.0
+
 # Data Validation
 pydantic>=2.5.0
 pydantic-settings>=2.1.0
