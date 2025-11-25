@@ -46,10 +46,29 @@ class KalshiClient:
         self._load_private_key()
     
     def _load_private_key(self):
-        """Load RSA private key from file."""
+        """Load RSA private key from file or environment variable."""
         if not HAS_CRYPTO:
             return
-            
+        
+        import os
+        
+        # Option 1: Load from KALSHI_PRIVATE_KEY env var (for cloud deployment)
+        key_content = os.environ.get("KALSHI_PRIVATE_KEY")
+        if key_content:
+            try:
+                # Handle escaped newlines from env var
+                key_content = key_content.replace("\\n", "\n")
+                self._private_key = serialization.load_pem_private_key(
+                    key_content.encode(),
+                    password=None,
+                    backend=default_backend()
+                )
+                logger.info("Kalshi RSA private key loaded from environment variable")
+                return
+            except Exception as e:
+                logger.error(f"Failed to load Kalshi private key from env: {e}")
+        
+        # Option 2: Load from file path
         key_path = Path(self.private_key_path)
         if not key_path.exists():
             logger.warning(f"Kalshi private key not found at {key_path}")
@@ -62,7 +81,7 @@ class KalshiClient:
                     password=None,
                     backend=default_backend()
                 )
-            logger.info("Kalshi RSA private key loaded successfully")
+            logger.info("Kalshi RSA private key loaded from file")
         except Exception as e:
             logger.error(f"Failed to load Kalshi private key: {e}")
     
