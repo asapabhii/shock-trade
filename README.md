@@ -35,35 +35,6 @@ All ESPN APIs are completely free with no rate limits. Football-Data.org offers 
 
 ---
 
-## Architecture
-
-```
-sports-trader/
-├── sports/                  # Multi-sport architecture
-│   ├── base.py              # Abstract base classes
-│   ├── manager.py           # Unified sports manager
-│   ├── nfl/                 # NFL provider + strategy
-│   ├── nba/                 # NBA provider + strategy
-│   ├── nhl/                 # NHL provider + strategy
-│   ├── mlb/                 # MLB provider + strategy
-│   └── soccer/              # Soccer provider + strategy
-├── config/                  # Settings and configuration
-├── core/                    # Risk manager, order executor, state
-├── exchanges/               # Kalshi API client
-├── services/                # Monitoring service
-├── database/                # SQLite persistence
-├── api/                     # FastAPI backend
-│   └── routers/
-│       ├── sports.py        # Unified sports API
-│       ├── trades.py        # Trade history
-│       ├── positions.py     # Open positions
-│       └── system.py        # Bot control
-├── frontend/                # React dashboard
-└── tests/                   # Test suite
-```
-
----
-
 ## Prerequisites
 
 - Python 3.10 or higher
