@@ -214,10 +214,6 @@ pytest tests/ -v
 
 ## Disclaimer
 
-This project is for educational purposes only. It uses demo APIs and does not involve real money. The authors are not responsible for any losses if modified for real trading.
+This project is for educational purposes only. It uses demo APIs and does not involve real money. I'm not responsible for any losses if modified for real trading.
 
 ---
-
-## License
-
-MIT License
