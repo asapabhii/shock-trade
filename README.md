@@ -4,6 +4,8 @@ A multi-sport scoring-reaction trading bot with a modern dark-themed dashboard. 
 
 This project is for educational and demonstration purposes only. It uses demo/sandbox APIs and no real money is involved.
 
+Live: https://shocktrade.asapabhi.me/
+
 ---
 
 ## Supported Sports
